@@ -1,0 +1,17 @@
+extends layout
+
+block header
+    include header/index.jade
+block content
+    .col-md-4
+        a.screenshot(href='/festinodin')
+            img.img-responsive(src='/images/odin.jpg', alt='Responsive image')
+    .col-md-4
+        a.screenshot(href='/agricola')
+            img.img-responsive(src='/images/agricola.jpg', alt='Responsive image')
+    .col-md-4
+        a.screenshot(href='/wondersduel')
+            img.img-responsive(src='/images/7wondersDuel.jpg', alt='Responsive image')
+block footer
+    include footer/index.jade
+
