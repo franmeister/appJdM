@@ -1,34 +1,45 @@
 <!doctype html> 
-<html ng-app="angularGame"> 
+<html ng-app="gameController"> 
     <head> 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Angular CLIENT app</title>
+        <title>AppJdM</title>
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     </head> 
     <body ng-controller="mainController"> 
         <div class="container"> 
             <!--Cabecera-->
             <div class="jumbotron text-center">
-                <h1>Angular CLIENT List <span class="label label-info">{{ games.length }}</span></h1>
+                <h1>Games List <span class="label label-info">{{ games.length }}</span></h1>
             </div>
             <!--Lista de Todos-->
             <div id="game-list" class="row">
                 <div class="col-sm-4 col-sm-offset-4">
                     <div class="checkbox" ng-repeat="game in games">
                         <label>
-                            <input type="checkbox" ng-click="deleteGame(game._id)"> {{ game.name }} {{ game.status }} 
+                            <input type="checkbox" ng-click="deleteGame(game._id)"> {{ game.name }} {{ game.playersStatus }} 
                         </label>
                     </div>
                 </div>
             </div>
-            <!--Formulario para insertar nuevos Todo--> 
+            <!--Formulario para insertar nuevos juegos--> 
             <div id="client-form" class="row">
                 <div class="col-sm-8 col-sm-offset-2 text-center">
                     <form>
                         <div class="form-group">
-                            <input type="text" class="form-control input-lg text-center" placeholder="Inserta nuevo cliente" ng-model="formData.name">
-                            <input type="text" class="form-control input-lg text-center" placeholder="Estado" ng-model="formData.status">
+                            <input type="text" class="form-control input-lg text-center" placeholder="Juego" ng-model="formData.name">
+                            <select name="numberPlayers" id="numberPlayers" ng-model="formData.players">
+                                <option ng-repeat="option in numberPlayers" value="{{option.players}}">{{option.players}}</option>
+                            </select>
+                            <div id="numberPlayersInputs">
+<!--
+                                <input name="player1" class="form-control input-lg text-center" placeholder="Nombre Jugador 1" ng-model="formData.playerName1">
+                                <input name="player1" class="form-control input-lg text-center" placeholder="Puntuación Jugador 1" ng-model="formData.playerScore1">
+                                <input name="player2" class="form-control input-lg text-center" placeholder="Nombre Jugador 2" ng-model="formData.playerName2">
+                                <input name="player2" class="form-control input-lg text-center" placeholder="Puntuación Jugador 2" ng-model="formData.playerScore2">
+-->
+                            </div>
+<!--                            <input type="text" class="form-control input-lg text-center" placeholder="Estado" ng-model="formData.status">-->
                         </div>
                         <button class="btn btn-primary btn-lg" ng-click="createGame()">Añadir</button>
                     </form>
@@ -38,5 +49,6 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> 
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script> 
         <script src="main.js"></script>
+        <script src="score.js"></script>
     </body> 
 </html>

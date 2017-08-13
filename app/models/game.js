@@ -3,10 +3,10 @@ var Schema = mongoose.Schema;
 
 var gameSchema = new Schema({ 
     name: { type: String, required: true },
-    status: { type: String, required: true },
+    playersStatus: { type: String, required: true },
     created_at: {type: Date, default: Date.now},
     updated_at: {type: Date, default: Date.now}
-});
+},{strict: false});
 
 // Sets the created_at parameter equal to the current time
 gameSchema.pre('save', function(next){

@@ -20,9 +20,16 @@ exports.findById = function(req, res) {
 
 //POST - Insert a new register
 exports.add = function(req, res) {
+//    var numPlayer = 1;
+//    var players;
+//    while (numPlayer <= req.body.players){
+//        players = {
+//            playerName + numPlayer: req.body.playerName + numPlayer
+//        }
+//    }
     var game = new Game({
         name: req.body.name,
-        status: req.body.status
+        playersStatus: req.body.playersStatus
     });
     game.save(function(err, game) {
         if(err) return res.status(500).send(err.message);
@@ -30,12 +37,13 @@ exports.add = function(req, res) {
     });
 };
 
+//TODO
 //PUT - Update a register already exists
 exports.update = function(req, res) {
     game.findById(req.params.id, function(err, game) {
         var game = new Game({
             name: req.body.name,
-            status: req.body.status
+            playersStatus: req.body.playersStatus
         });
         game.save(function(err) {
             if(err) return res.status(500).send(err.message);
